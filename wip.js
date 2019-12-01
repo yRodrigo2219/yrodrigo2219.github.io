@@ -82,13 +82,15 @@
         const h = canvas.height;
         ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
         ctx.fillRect(0, 0, w, h);
+        
+        var wI, hI;
 
         if(h < w){
-            const hI = h/3;
-            const wI = Math.round(hI * 1.128409090909091);   
+            hI = h/3;
+            wI = Math.round(hI * 1.128409090909091);   
         }else{
-            const wI = w/3;
-            const hI = Math.round(wI / 1.128409090909091);   
+            wI = w/3;
+            hI = Math.round(wI / 1.128409090909091);   
         }
 
         drawBalls();
