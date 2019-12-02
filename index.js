@@ -1,7 +1,7 @@
 const screens = {
     INFO: 'info',
     GAME: {
-        TICTACTOE: "https://yrodrigo2219.github.io/tictactoe/index.js",
+        TICTACTOE: "https://yrodrigo2219.github.io/tictactoe/",
         SUDOKU: 'sud',
         SNAKE: 'sna',
         MINESWEEPER: 'min',
@@ -34,7 +34,7 @@ const state = {
 
 function renderPage(){
     clearPage();
-    loadScript(state.currentpage).catch(_=>{
+    loadScript(state.currentpage + 'index.js').catch(_=>{
         clearPage();
         loadScript(screens.WIP);
     });
@@ -49,6 +49,20 @@ async function loadScript( url ){
         script.onload = resolve;
         script.onerror = reject;
     });
+}
+
+function showInfo(){
+    if(!document.getElementById('infoPage')){
+        const infoPage = document.createElement('div');
+        infoPage.id = 'infoPage';
+        document.getElementById('root').appendChild(infoPage);
+
+        loadScript(state.currentpage + 'info.js').catch(_=>{ // must chage to 'then' when compleated
+            infoPage.scrollIntoView({behavior: "smooth"});
+        });
+    }else{
+        infoPage.scrollIntoView({behavior: "smooth"});
+    }
 }
 
 function clearPage(){
