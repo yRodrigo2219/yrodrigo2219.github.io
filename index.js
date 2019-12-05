@@ -1,29 +1,10 @@
 const screens = {
-    INFO: 'info',
-    GAME: {
-        TICTACTOE: "https://yrodrigo2219.github.io/tictactoe/",
-        SUDOKU: 'sud',
-        SNAKE: 'sna',
-        MINESWEEPER: 'min',
-        PACMAN: 'pac'
-    },
-    SORTING: {
-        HEAPSORT: 'heap',
-        MERGESORT: 'mer',
-        QUICKSORT: 'quic',
-        BUBBLESORT: 'bubbl',
-        INSERTSELECT: 'ins/sel'
-    },
-    GRAPHS: {
-        DFS: 'dfs',
-        BFS: 'bfs',
-        PRIM: 'prim',
-        KRUSKAL: 'krus',
-        DIJKSTRA: 'dijk'
-    },
-    MATCHING: {
-        BRUTEFORCE: 'brufo',
-        KMS: 'kms'
+    INFO: "info.js",
+    MENU: {
+        GAME: "port-games/menu.js",
+        SORTING: "port-sort/menu.js",
+        GRAPHS: "port-graph/menu.js",
+        MATCHING: "port-match/menu.js"
     },
     WIP: "wip.js"
 }
@@ -34,9 +15,28 @@ const state = {
 
 function renderPage(){
     clearPage();
-    loadScript(state.currentpage + 'index.js').catch(_=>{
+    loadScript(state.currentpage).catch(_=>{
         clearPage();
         loadScript(screens.WIP);
+    });
+}
+
+function loadMenu(){
+    renderPage();
+    const keys = Object.keys(screens.MENU);
+    keys.map(async key =>{
+        await new Promise(_=>{
+            const script = document.createElement('script');
+            document.body.appendChild(script);
+            script.src = screens.MENU[key];
+            script.onload = ()=>{
+                document.body.removeChild(script);
+            };
+            script.onerror = ()=>{
+                document.body.removeChild(script);
+                alert("Error on loading "+ key +" dropdown!");
+            };
+        });
     });
 }
 
@@ -82,4 +82,4 @@ function goTo( page ){
     renderPage();
 }
 
-onload = renderPage();
+onload = loadMenu();

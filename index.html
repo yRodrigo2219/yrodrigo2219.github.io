@@ -30,7 +30,7 @@
         <!-- Navgation Bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light noSelect" id="menu">
             <!-- Brand Mark -->
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="javascript:void(0);" onclick="goTo(screens.INFO)">
                 <img src="./favicon.ico" width="40" height="40" class="d-inline-block align-top" alt="">
             </a>
     
@@ -40,56 +40,8 @@
             </button>
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- Games dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Games
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GAME.TICTACTOE)">Tic-Tac-Toe</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GAME.SUDOKU)">Sudoku</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GAME.SNAKE)">Snake</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GAME.MINESWEEPER)">Minesweeper</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GAME.PACMAN)">Pac-Man</a>
-                        </div>
-                    </li>
-                    <!-- Sorting dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sorting
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.SORTING.HEAPSORT)">Heap-Sort</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.SORTING.MERGESORT)">Merge-Sort</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.SORTING.QUICKSORT)">Quick-Sort</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.SORTING.BUBBLESORT)">Bubble-Sort</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.SORTING.INSERTSELECT)">Insert/Select</a>
-                        </div>
-                    </li>
-                    <!-- Graphs dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Graphs
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GRAPHS.DFS)">DFS</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GRAPHS.BFS)">BFS</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GRAPHS.PRIM)">Prim's</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GRAPHS.KRUSKAL)">Kruskal's</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.GRAPHS.DIJKSTRA)">Dijkstra's</a>
-                        </div>
-                    </li>
-                    <!-- Matching dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Matching
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.MATCHING.BRUTEFORCE)">Brute Force</a>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="goTo(screens.MATCHING.KMS)">KMS</a>
-                        </div>
-                    </li>
+                <ul class="navbar-nav mr-auto" id="dropMenu">
+                    <!-- Script loads menu here -->
                 </ul>
             </div>
         </nav>
