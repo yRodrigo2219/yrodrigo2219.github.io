@@ -26,6 +26,26 @@
     <title>yRodrigo2219</title>
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="noInfo" tabindex="-1" role="dialog" aria-labelledby="noInfoLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="noInfoLabel">Missing info!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    There's no info page for this page right now.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <div id="floating">
         <!-- Navgation Bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light noSelect" id="menu">
@@ -47,7 +67,7 @@
         </nav>
     
         <!-- Floating Button -->
-        <a href="javascript:void(0);" onclick="showInfo()" data-toggle="tooltip" title="This page's info">
+        <a id="floating-info" href="javascript:void(0);" onclick="showInfo()" data-toggle="tooltip" title="This page's info">
             <div class="fab fas noSelect"></div>
         </a>
     </div>

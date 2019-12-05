@@ -1,43 +1,48 @@
 const screens = {
-    INFO: "info.js",
+    INFO: "info/",
     MENU: {
         GAME: "port-games/menu.js",
         SORTING: "port-sort/menu.js",
         GRAPHS: "port-graph/menu.js",
         MATCHING: "port-match/menu.js"
     },
-    WIP: "wip.js"
+    WIP: "wip/"
 }
 
 const state = {
-    currentpage: screens.INFO
+    currentpage: screens.WIP
 }
 
 function renderPage(){
     clearPage();
-    loadScript(state.currentpage).catch(_=>{
-        clearPage();
-        loadScript(screens.WIP);
+    loadScript(state.currentpage + "index.js").catch(_=>{
+        state.currentpage = screens.WIP;
+        renderPage();
     });
 }
 
 function loadMenu(){
     renderPage();
     const keys = Object.keys(screens.MENU);
-    keys.map(async key =>{
-        await new Promise(_=>{
-            const script = document.createElement('script');
-            document.body.appendChild(script);
-            script.src = screens.MENU[key];
-            script.onload = ()=>{
-                document.body.removeChild(script);
-            };
-            script.onerror = ()=>{
-                document.body.removeChild(script);
-                alert("Error on loading "+ key +" dropdown!");
-            };
-        });
-    });
+
+    // Load the menu dynamically, but always in the same order
+    (function loop(i){
+        if(i >= keys.length)
+            return;
+
+        const script = document.createElement('script');
+        document.body.appendChild(script);
+        script.src = screens.MENU[keys[i]];
+        script.onload = ()=>{
+            document.body.removeChild(script);
+            loop(++i);
+        };
+        script.onerror = ()=>{
+            document.body.removeChild(script);
+            alert("Error on loading "+ keys[i] +" dropdown!");
+            loop(++i);
+        };
+    })(0);
 }
 
 async function loadScript( url ){
@@ -57,11 +62,13 @@ function showInfo(){
         infoPage.id = 'infoPage';
         document.getElementById('root').appendChild(infoPage);
 
-        loadScript(state.currentpage + 'info.js').catch(_=>{ // must chage to 'then' when compleated
+        loadScript(state.currentpage + 'info.js').then(_=>{ // must chage to 'then' when compleated
+            document.getElementById('floating-info').style.visibility = "hidden";
             infoPage.scrollIntoView({behavior: "smooth"});
+        }).catch(_=>{
+            document.getElementById('floating-info').style.visibility = "hidden";
+            $('#noInfo').modal('show');
         });
-    }else{
-        infoPage.scrollIntoView({behavior: "smooth"});
     }
 }
 

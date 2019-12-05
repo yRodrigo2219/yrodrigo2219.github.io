@@ -1,11 +1,13 @@
 (function(){
+    document.getElementById('floating-info').style.visibility = "visible";
+
     const root = document.getElementById('root');
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.style.cursor = 'pointer';
 
     const img = document.createElement("img");
-    img.src = "wip_logo.png";
+    img.src = "wip/wip_logo.png";
 
     canvas.width = root.clientWidth;
     canvas.height = root.clientHeight;

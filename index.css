@@ -50,7 +50,3 @@
 #floating, #floating * {
     z-index: 2;
 }
-
-#infoPage {
-    height: 800%;
-}
